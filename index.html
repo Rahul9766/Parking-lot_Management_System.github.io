@@ -1,106 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./CSS/bootstrap.min.css">
-    <link rel="stylesheet" href="./CSS/style.css">
-    <title>Parking Lot</title>
+    <title>Login Form Modal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            outline: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: #383838;
+        }
+
+        section#overlay {
+            position: fixed;
+            top: -100%;
+            left: 0;
+            right: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(-90deg, red, yellow);
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.2s all linear;
+        }
+
+        section#overlay.active {
+            visibility: visible;
+            opacity: 1;
+            top: 0;
+        }
+
+        section#overlay aside {
+            background-color: #fff;
+            width: 350px;
+            padding: 20px;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        section#overlay aside h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #181818;
+        }
+
+        section#overlay aside a.close {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            cursor: pointer;
+        }
+
+        section#overlay aside a.close svg {
+            width: 25px;
+            height: 25px;
+        }
+
+        section#overlay aside h4 {
+            font-size: 16px;
+            color: #282828;
+            margin-bottom: 8px;
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: calc(100% - 20px);
+            padding: 8px 10px;
+            border: #cdcdcd solid 1px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            border: none;
+            padding: 8px 20px;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 16px;
+            background-image: linear-gradient(-90deg, red, yellow);
+        }
+
+        
+
+        div.btnSec {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button[type=button]{
+            padding: 10px 20px;
+            background-image: linear-gradient(-90deg, red, yellow);
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            border-radius: 10px;
+        }
+    </style>
+    <script>
+        function toggleModal() {
+            document.getElementById("overlay").classList.toggle('active');
+        }
+
+
+
+    </script>
 </head>
-
-<body style="background-color:pink;">
-    <header class="shadow">
-        <div class="header-content d-flex justify-content-center p-2">
-            <img src="./Images/parking.svg" alt="" id="header-logo">
-            <div id="header-msg" class="ml-5 align-self-center">PARKING LOT</div>
-            <input type=button class="btn1" onClick="parent.location='login.html'"
- value='Log Out'>
-        </div>
-    </header>
-    <div class="form-container mt-5">
-        <form class="w-50 mx-auto" id="entryForm">
-            <h5 class="text-center">Add Car to Parking Lot</h5>
-            <div class="form-group">
-                <label for="owner">Owner:</label>
-                <input type="text" class="form-control rounded-0 shadow-sm" id="owner" placeholder="Owner">
-            </div>
-            <div class="form-group">
-                <label for="car">Car:</label>
-                <input type="text" class="form-control rounded-0 shadow-sm" id="car" placeholder="Car">
-            </div>
-            <div class="form-group">
-                <label for="licensePlate">License Plate:</label>
-                <input type="text" class="form-control rounded-0 shadow-sm" id="licensePlate" placeholder="LL-NN-LL-NNNN">
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <label for="entryDate">Entry Date:</label>
-                    <input type="date" class="form-control rounded-0 shadow-sm" id="entryDate">
-                </div>
-                <div class="col-6">
-                    <label for="exitDate">Exit Date:</label>
-                    <input type="date" class="form-control rounded-0 shadow-sm" id="exitDate">
-                </div>
-            </div>
-            <button type="submit" class="btn mx-auto d-block mt-5 rounded-0 shadow" id="btnOne">Add Car</button>
-        </form>
+<body>
+    <div class="btnSec">
+        <button type="button" onclick="toggleModal()">Login Now!</button>
     </div>
-    <div class="table-container mt-5 mb-5 w-75 mx-auto" >
-            <h5 class="text-center mb-3">List of Cars in Parking Lot</h5>
-
-            <input type="text" class="w-100 mb-3" id="searchInput" placeholder="Search...">
-            <table class="table table-striped shadow " id="parkingTable">
-                    <thead class="text-white" id="tableHead">
-                      <tr>
-                        <th scope="col">Owner</th>
-                        <th scope="col">Car</th>
-                        <th scope="col">License Plate</th>
-                        <th scope="col">Entry Date</th>
-                        <th scope="col">Exit Date</th>
-                        <th scope="col">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody id="tableBody">
-                     
-                    </tbody>
-                  </table>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="./JS/bootstrap.min.js"></script>
-    <script src="./JS/core.js"></script>
+    <section id="overlay">
+        <aside>
+            <h2>Login</h2>
+            <form action="">
+                <a onclick="toggleModal()" class="close">
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:#a70eff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title/><g id="cross"><line class="cls-1" x1="7" x2="25" y1="7" y2="25"/><line class="cls-1" x1="7" x2="25" y1="25" y2="7"/></g></svg> 
+                </a>
+                <h4>Username</h4>
+                <input type="text" id="user" required />
+                <h4>Password</h4>
+                <input type="password" id="pass"   required />
+                <input type=button  id="register" class="btn" onClick="parent.location='Dashboard.html'"
+ value='Login' >
+            </form>
+        </aside>
+    </section>
 </body>
-
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
