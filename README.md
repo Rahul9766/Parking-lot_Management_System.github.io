@@ -25,7 +25,7 @@ The Parking Lot Management System is a web application built using JavaScript. I
 - Management of parking spots with EV charging stations.
 - Designated areas for carpooling and bike parking.
 - Integration with public transportation systems and ride-sharing services.
-
+  
 ## Problem Statement
 
 The Parking Lot Management System aims to address the following problems:
